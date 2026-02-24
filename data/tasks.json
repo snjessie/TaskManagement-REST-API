@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2024-01-01T00:00:00.000Z",
+  "tasks": [
+    {
+      "id": "uuid-v4",
+      "title": "Complete project", // Required
+      "description": "...", // Required
+      "status": "pending", // pending | in-progress | completed
+      "priority": "high", // low | medium | high
+      "createdAt": "ISO timestamp", // Auto-set on POST
+      "updatedAt": "ISO timestamp", // Auto-updated on PUT/PATCH
+      "dueDate": "ISO timestamp", // Optional
+      "tags": ["work", "important"], // Optional array
+      "subtasks": [
+        // Optional
+        { "id": "uuid", "title": "Write docs", "completed": false }
+      ]
+    }
+  ]
+}
