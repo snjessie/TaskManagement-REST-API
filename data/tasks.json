@@ -4,18 +4,93 @@
   "tasks": [
     {
       "id": "uuid-v4",
-      "title": "Complete project", // Required
-      "description": "...", // Required
-      "status": "pending", // pending | in-progress | completed
-      "priority": "high", // low | medium | high
-      "createdAt": "ISO timestamp", // Auto-set on POST
-      "updatedAt": "ISO timestamp", // Auto-updated on PUT/PATCH
-      "dueDate": "ISO timestamp", // Optional
-      "tags": ["work", "important"], // Optional array
+      "title": "Complete project",
+      "description": "...",
+      "status": "pending",
+      "priority": "low",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "dueDate": "2024-02-01T00:00:00.000Z",
+      "tags": [
+        "work",
+        "important"
+      ],
       "subtasks": [
-        // Optional
-        { "id": "uuid", "title": "Write docs", "completed": false }
+        {
+          "id": "uuid",
+          "title": "Write docs",
+          "completed": false
+        }
       ]
+    },
+    {
+      "id": "task-002",
+      "title": "Buy groceries",
+      "description": "Milk, Eggs, Bread",
+      "status": "completed",
+      "priority": "high",
+      "createdAt": "2024-01-02T10:00:00.000Z",
+      "updatedAt": "2024-01-02T10:00:00.000Z",
+      "dueDate": "2024-01-03T18:00:00.000Z",
+      "tags": [
+        "personal"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "83728e27-9c78-49e8-8b7d-1c99c0ae88c6",
+      "title": "Updating Patch again 1000x T_T",
+      "description": "Testing again -Select METHOD PATCH",
+      "status": "in-progress",
+      "priority": "medium",
+      "tags": [
+        "important",
+        "work"
+      ],
+      "subtasks": [],
+      "dueDate": null,
+      "createdAt": "2026-03-01T14:11:45.256Z",
+      "updatedAt": "2026-03-02T16:03:04.832Z"
+    },
+    {
+      "id": "2a7b49d1-d3ab-4490-86ad-f81ac590e1c6",
+      "title": "Complete the project",
+      "description": "Finish everything",
+      "dueDate": "2024-12-31T00:00:00.000Z",
+      "status": "pending",
+      "priority": "medium",
+      "tags": [],
+      "subtasks": [],
+      "createdAt": "2026-03-01T15:10:55.866Z",
+      "updatedAt": "2026-03-01T15:10:55.866Z"
+    },
+    {
+      "id": "c6a8567d-39b8-40e1-a674-bfa8ce956fdd",
+      "title": "Water plants",
+      "description": "Check soil moisture first",
+      "status": "pending",
+      "priority": "low",
+      "tags": [
+        "home"
+      ],
+      "subtasks": [],
+      "createdAt": "2026-03-03T04:18:28.771Z",
+      "updatedAt": "2026-03-03T07:14:20.871Z",
+      "dueDate": "2026-03-03T00:00:00.000Z"
+    },
+    {
+      "id": "5d704c49-411d-4ce7-bc1e-f002d4864338",
+      "title": "Water plants",
+      "description": "Check soil moisture first",
+      "status": "in-progess",
+      "priority": "low",
+      "dueDate": "2026-03-03T00:00:00.000Z",
+      "tags": [
+        "home"
+      ],
+      "subtasks": [],
+      "createdAt": "2026-03-03T06:12:29.120Z",
+      "updatedAt": "2026-03-03T06:12:29.120Z"
     }
   ]
 }

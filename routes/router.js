@@ -2,6 +2,7 @@
 // dependencies
 const { parseRequest, parseBody } = require('../utils/parser');
 const getAllTasks = require('../handlers/taskHandlers/getAllTasks');
+const getSearchedTasks = require('../handlers/taskHandlers/getSearchedTasks');
 const createTask = require('../handlers/taskHandlers/createTask');
 const getByStatus = require('../handlers/taskHandlers/getByStatus');
 const getTaskById = require('../handlers/taskHandlers/getTaskById');
@@ -14,6 +15,7 @@ const { notFound, badRequest, internalServerError } = require('../handlers/error
 
 const routes = [
     { method: 'GET', pattern: '/api/tasks', handler: getAllTasks },
+    { method: 'GET', pattern: '/api/search', handler: getSearchedTasks },
     { method: 'POST', pattern: '/api/tasks', handler: createTask },
     { method: 'GET', pattern: '/api/tasks/status/:status', handler: getByStatus },
     { method: 'GET', pattern: '/api/tasks/:id', handler: getTaskById },
@@ -80,7 +82,7 @@ router.handleReqRes = async (req, res) => {
     } else {
         req.body = {};
     }
-
+    // console.log(extractedParams);
     try {
         await matchedRoute.handler(req, res, extractedParams, query);
     } catch (err) {

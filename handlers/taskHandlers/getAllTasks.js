@@ -1,35 +1,10 @@
-const fs = require('fs');
-const path = require('path');
 const { sendJSON } = require('../../middleware/resFormatter');
+const { readFile } = require('../fileHandler');
 const { internalServerError } = require('../errorHandler');
 
-const getAllTasks = (req, res, _, query) => {
-    const filePath = path.join(__dirname, '../../data/tasks.json');
-
-    fs.readFile(filePath, 'utf-8', (err, fileData) => {
-        // If file doesn't exist
-        if (err) {
-            if (err.code === 'ENOENT') {
-                const initialData = {
-                    version: '1.0',
-                    lastUpdated: new Date().toISOString(),
-                    tasks: [],
-                };
-                fs.writeFileSync(filePath, JSON.stringify(initialData, null, 2));
-                return sendJSON(res, 200, []);
-            }
-            // console.error(err);
-            return internalServerError(res);
-        }
-
-        let parsedData;
-
-        try {
-            parsedData = JSON.parse(fileData);
-        } catch (parseError) {
-            // console.error(parseError);
-            return internalServerError(res);
-        }
+const getAllTasks = async (req, res, _, query) => {
+    try {
+        const parsedData = await readFile();
 
         const safeQuery = query || {};
         let tasks = parsedData.tasks || [];
@@ -67,11 +42,14 @@ const getAllTasks = (req, res, _, query) => {
         // Pagination(page & limit)
         const page = parseInt(safeQuery.page, 10) || 1;
         const limit = parseInt(safeQuery.limit, 10) || 3;
+        // Offset
         const startIndex = (page - 1) * limit;
 
-        const paginatedTasks = tasks.slice(startIndex, startIndex + 3);
+        const paginatedTasks = tasks.slice(startIndex, startIndex + limit);
         return sendJSON(res, 200, paginatedTasks);
-    });
+    } catch (error) {
+        return internalServerError(res);
+    }
 };
 
 module.exports = getAllTasks;
